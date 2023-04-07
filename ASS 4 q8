@@ -1,0 +1,27 @@
+Write a program that declares a union variable data that can store an integer or a float value. Prompt the user to enter a value of their choice and store it in the appropriate member of the union. Then, print the value that was entered
+
+
+#include <stdio.h>
+union Data
+{
+int i;
+float f;
+};
+int main() {
+union Data data;
+char choice;
+printf("Enter 'i' for integer or 'f' for float: ");
+scanf(" %c", &choice);
+if (choice == 'i') {
+printf("Enter an integer value: ");
+scanf("%d", &data.i);
+printf("Value entered: %d\n", data.i);
+} else if (choice == 'f') {
+printf("Enter a float value: ");
+scanf("%f", &data.f);
+printf("Value entered: %.2f\n", data.f);
+} else {
+printf("Invalid choice!\n");
+}
+return 0;
+}
