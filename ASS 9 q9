@@ -1,0 +1,20 @@
+Create a program that defines a union student that can store a student's name (up to 50 characters) and their GPA. Prompt the user to enter the student's name and GPA, and store them in the union. Then, print the student's name and GPA.
+
+
+#include <stdio.h>
+union student 
+{
+char name[50];
+float gpa;
+};
+int main() 
+{
+union student s;
+printf("Enter student name: ");
+fgets(s.name, sizeof(s.name), stdin);
+printf("Enter student GPA: ");
+scanf("%f", &s.gpa);
+printf("Student name: %s", s.name);
+printf("Student GPA: %.2f\n", s.gpa);
+return 0;
+}
