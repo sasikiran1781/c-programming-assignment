@@ -1,0 +1,37 @@
+Write a program that defines a union shape that can store a circle's radius or a rectangle's length and width. Prompt the user to enter the type of shape they want to calculate (circle or rectangle), and then prompt them to enter the appropriate dimensions. Calculate and print the area of the shape they entered.
+
+
+#include <stdio.h>
+#define PI 3.14159
+
+union shape 
+{
+float radius;
+struct {
+float length;
+float width;
+} rectangle;
+};
+int main() {
+union shape s;
+char shape_type;
+printf("Enter shape type (c for circle, r for rectangle): ");
+scanf("%c", &shape_type);
+float area;
+if (shape_type == 'c') {
+printf("Enter circle radius: ");
+scanf("%f", &s.radius);
+area = PI * s.radius * s.radius;
+} else if (shape_type == 'r') {
+printf("Enter rectangle length: ");
+scanf("%f", &s.rectangle.length);
+printf("Enter rectangle width: ");
+scanf("%f", &s.rectangle.width);
+area = s.rectangle.length * s.rectangle.width;
+} else {
+printf("Invalid shape type!\n");
+return 1;
+}
+printf("The area of the %s is %.2f\n", (shape_type == 'c') ? "circle" : "rectangle", area);
+return 0;
+}
